@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Livewire\Blog\AddBlog;
 use App\Http\Livewire\Books;
 use App\Http\Livewire\Contact;
 use App\Http\Livewire\Home;
+use App\Http\Livewire\Login;
 use App\Http\Livewire\Partner;
 use Illuminate\Support\Facades\Route;
 
@@ -21,4 +23,13 @@ Route::get('/', Home::class)->name('home');
 Route::get('contact', Contact::class)->name('contact');
 Route::get('partenaires', Partner::class)->name('partenaires');
 Route::get('books', Books::class)->name('books');
+Route::get('auth/admin/login', Login::class)->name('login');
 
+Route::get('/add-blog', AddBlog::class)->name('add-blog');
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+});

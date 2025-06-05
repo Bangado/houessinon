@@ -9,6 +9,8 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tailwindcss/ui@latest/dist/tailwind-ui.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&display=swap" rel="stylesheet">
+<script src="https://cdn.tiny.cloud/1/{{ env('TINY_KEY') }}/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
 <!---- ajouter le fichier css/syle.css --->
 @livewireStyles
 
