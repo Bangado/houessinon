@@ -9,10 +9,11 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tailwindcss/ui@latest/dist/tailwind-ui.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&display=swap" rel="stylesheet">
-<script src="https://cdn.tiny.cloud/1/{{ env('TINY_KEY') }}/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="https://cdn.tiny.cloud/1/<?php echo e(env('TINY_KEY')); ?>/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
 <!---- ajouter le fichier css/syle.css --->
-@livewireStyles
+<?php echo \Livewire\Livewire::styles(); ?>
+
 
 <body class="min-h-screen flex flex-col">
 
@@ -61,22 +62,22 @@
                     </li>
 
                     <li>
-                        <a href="{{ route('media.gallery') }}"
+                        <a href="<?php echo e(route('media.gallery')); ?>"
                             class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Galerie</a>
                     </li>
-                    @auth
+                    <?php if(auth()->guard()->check()): ?>
                         <li>
-                            <a href="{{ route('add-blog') }}"
+                            <a href="<?php echo e(route('add-blog')); ?>"
                                 class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Ajouter
                                 un article</a>
                         </li>
 
                         <li>
-                            <a href="{{ route('media.upload') }}"
+                            <a href="<?php echo e(route('media.upload')); ?>"
                                 class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Ajouter
                                 Medias</a>
                         </li>
-                    @endauth
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>
@@ -86,13 +87,15 @@
 
 
 
-    {{ $slot }}
+    <?php echo e($slot); ?>
+
     <footer class="text-center py-6 text-bold text-gray-500 bg-orange-50 text-black  h-10">
-        © {{ date('Y') }} <span class="text-orange-500">Dumas</span> Houessinon – Tous droits réservés.
+        © <?php echo e(date('Y')); ?> <span class="text-orange-500">Dumas</span> Houessinon – Tous droits réservés.
     </footer>
 
 
-    @livewireScripts
+    <?php echo \Livewire\Livewire::scripts(); ?>
+
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
     <script src="https://cdn.tiny.cloud/1/kueldrwgikubo5osmzxosl5stwnbs5nlw45bn7i9yb183u3j/tinymce/7/tinymce.min.js"
@@ -102,3 +105,4 @@
 </body>
 
 </html>
+<?php /**PATH /home/tic/Bureau/perso/dumas-houssinon/resources/views/layouts/base.blade.php ENDPATH**/ ?>

@@ -1,208 +1,106 @@
-<div class="relative p-2">
 
-    <div>
-        <p class="text-lg font-semibold text-nowrap">{{ __('Configurations') }}</p>
-    </div>
+<div class="bg-gray-100 py-10 px-4">
 
-    <div class="rounded-2xl border m-4 p-6 overflow-auto bg-white">
-        <div>
-            <div class="grid gap-6 mb-6 md:grid-cols-2">
+    <div class="max-w-3xl mx-auto p-6 bg-white rounded shadow space-y-6">
+        <h2 class="text-xl font-bold">Créer un article</h2>
 
-                <x-group for="form.conditions_fr" inline="true" label="{{ __('Conditions in French') }}"
-                    :error="$errors->first('form.conditions_fr')">
-                    <div wire:ignore>
-                        <textarea wire:model="form.conditions_fr" id="conditions_fr" rows="10"></textarea>
+        <!-- Message de succès -->
+        @if (session()->has('success'))
+            <div class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        <!-- Erreurs globales -->
+        @if ($errors->any())
+            <ul class="text-sm text-red-600 list-disc pl-5">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
+
+        <!-- Formulaire -->
+        <form wire:submit.prevent="save" class="space-y-5">
+            <!-- Titre -->
+            <div>
+                <label for="title" class="block text-sm font-medium">Titre</label>
+                <input type="text" wire:model="title" id="title"
+                    class="mt-1 block w-full rounded border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+                @error('title')
+                    <span class="text-red-600 text-sm">{{ $message }}</span>
+                @enderror
+            </div>
+
+            <!-- Image -->
+            <div>
+                <label class="block text-sm font-medium">Image</label>
+                <input type="file" wire:model="image" accept="image/*" class="mt-1" />
+                @error('image')
+                    <span class="text-red-600 text-sm">{{ $message }}</span>
+                @enderror
+
+                @if ($image)
+                    <div class="mt-2">
+                        <img src="{{ $image->temporaryUrl() }}" class="w-full max-h-64 object-contain rounded" />
                     </div>
-                </x-group>
-
-
-
+                @endif
             </div>
-            <div class="flex items-center justify-end mt-6">
 
-                <x-green-button class="ml-3" wire:click="save" wire:loading.attr="disabled">
-                    {{ __('Save') }}
-                </x-green-button>
+            <!-- Contenu -->
+            <div wire:ignore>
+                <label for="content" class="block text-sm font-medium">Contenu</label>
+                <textarea id="content" class="w-full rounded border-gray-300 shadow-sm"></textarea>
+                @error('content')
+                    <span class="text-red-600 text-sm">{{ $message }}</span>
+                @enderror
             </div>
-        </div>
 
+            <!-- Bouton -->
+            <div>
+                <button type="submit"
+                    class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Enregistrer</button>
+            </div>
+        </form>
     </div>
 
-    <x-loading-save function="save"></x-loading-save>
+    <!-- Scripts Flowbite -->
+    <script src="https://unpkg.com/flowbite@2.3.0/dist/flowbite.min.js"></script>
 
-
-    @push('scripts')
-        <script>
+    <!-- TinyMCE Config + Synchronisation Livewire -->
+    <script>
+        document.addEventListener('livewire:load', function () {
             tinymce.init({
-                path_absolute: "/",
-                selector: '#conditions_pt',
-                relative_urls: false,
-                language: 'pt_PT',
+                selector: '#content',
                 plugins: [
-                    "advlist autolink lists link image charmap print preview hr anchor pagebreak",
-                    "searchreplace wordcount visualblocks visualchars code fullscreen",
-                    "insertdatetime media nonbreaking save table directionality",
-                    "emoticons template paste textpattern"
+                    'anchor autolink charmap codesample emoticons image link lists media',
+                    'searchreplace table visualblocks wordcount checklist mediaembed',
+                    'casechange formatpainter pageembed a11ychecker tinymcespellchecker',
+                    'permanentpen powerpaste advtable advcode editimage advtemplate ai',
+                    'mentions tinycomments tableofcontents footnotes mergetags autocorrect',
+                    'typography inlinecss markdown importword exportword exportpdf'
                 ],
-                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media",
-                file_picker_callback(callback, value, meta) {
-                    let x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName(
-                        'body')[0].clientWidth
-                    let y = window.innerHeight || document.documentElement.clientHeight || document
-                        .getElementsByTagName(
-                            'body')[0].clientHeight
+                toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | ' +
+                    'link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | ' +
+                    'align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+                tinycomments_mode: 'embedded',
+                tinycomments_author: 'Author name',
+                mergetags_list: [{
+                    value: 'First.Name',
+                    title: 'First Name'
+                }, {
+                    value: 'Email',
+                    title: 'Email'
+                }],
+                ai_request: (request, respondWith) => respondWith.string(() => Promise.reject(
+                    'See docs to implement AI Assistant')),
 
-                    tinymce.activeEditor.windowManager.openUrl({
-                        url: '/file-manager/tinymce5',
-                        title: 'Baruteem gestionnaire des fichiers',
-                        width: x * 0.8,
-                        height: y * 0.8,
-                        onMessage: (api, message) => {
-                            callback(message.content, {
-                                text: message.text
-                            })
-                        }
-                    })
-                },
-                setup: function(editor) {
-                    editor.on('init change', function() {
-                        editor.save();
-                    });
-                    editor.on('change', function(e) {
-                        @this.set('form.conditions_pt', editor.getContent());
+                setup: function (editor) {
+                    editor.on('Change KeyUp', function () {
+                        @this.set('content', editor.getContent());
                     });
                 }
             });
-        </script>
-
-        <script>
-            tinymce.init({
-                path_absolute: "/",
-                selector: '#conditions_fr',
-                relative_urls: false,
-                language: 'fr_FR',
-                plugins: [
-                    "advlist autolink lists link image charmap print preview hr anchor pagebreak",
-                    "searchreplace wordcount visualblocks visualchars code fullscreen",
-                    "insertdatetime media nonbreaking save table directionality",
-                    "emoticons template paste textpattern"
-                ],
-                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media",
-                file_picker_callback(callback, value, meta) {
-                    let x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName(
-                        'body')[0].clientWidth
-                    let y = window.innerHeight || document.documentElement.clientHeight || document
-                        .getElementsByTagName(
-                            'body')[0].clientHeight
-
-                    tinymce.activeEditor.windowManager.openUrl({
-                        url: '/file-manager/tinymce5',
-                        title: 'Baruteem gestionnaire des fichiers',
-                        width: x * 0.8,
-                        height: y * 0.8,
-                        onMessage: (api, message) => {
-                            callback(message.content, {
-                                text: message.text
-                            })
-                        }
-                    })
-                },
-                setup: function(editor) {
-                    editor.on('init change', function() {
-                        editor.save();
-                    });
-                    editor.on('change', function(e) {
-                        @this.set('form.conditions_fr', editor.getContent());
-                    });
-                }
-            });
-        </script>
-
-        <script>
-            tinymce.init({
-                path_absolute: "/",
-                selector: '#about_fr',
-                relative_urls: false,
-                language: 'fr_FR',
-                plugins: [
-                    "advlist autolink lists link image charmap print preview hr anchor pagebreak",
-                    "searchreplace wordcount visualblocks visualchars code fullscreen",
-                    "insertdatetime media nonbreaking save table directionality",
-                    "emoticons template paste textpattern"
-                ],
-                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media",
-                file_picker_callback(callback, value, meta) {
-                    let x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName(
-                        'body')[0].clientWidth
-                    let y = window.innerHeight || document.documentElement.clientHeight || document
-                        .getElementsByTagName(
-                            'body')[0].clientHeight
-
-                    tinymce.activeEditor.windowManager.openUrl({
-                        url: '/file-manager/tinymce5',
-                        title: 'Baruteem gestionnaire des fichiers',
-                        width: x * 0.8,
-                        height: y * 0.8,
-                        onMessage: (api, message) => {
-                            callback(message.content, {
-                                text: message.text
-                            })
-                        }
-                    })
-                },
-                setup: function(editor) {
-                    editor.on('init change', function() {
-                        editor.save();
-                    });
-                    editor.on('change', function(e) {
-                        @this.set('form.about_fr', editor.getContent());
-                    });
-                }
-            });
-        </script>
-
-        <script>
-            tinymce.init({
-                path_absolute: "/",
-                selector: '#conditions',
-                relative_urls: false,
-                language: 'fr_FR',
-                plugins: [
-                    "advlist autolink lists link image charmap print preview hr anchor pagebreak",
-                    "searchreplace wordcount visualblocks visualchars code fullscreen",
-                    "insertdatetime media nonbreaking save table directionality",
-                    "emoticons template paste textpattern"
-                ],
-                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media",
-                file_picker_callback(callback, value, meta) {
-                    let x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName(
-                        'body')[0].clientWidth
-                    let y = window.innerHeight || document.documentElement.clientHeight || document
-                        .getElementsByTagName(
-                            'body')[0].clientHeight
-
-                    tinymce.activeEditor.windowManager.openUrl({
-                        url: '/file-manager/tinymce5',
-                        title: 'Baruteem gestionnaire des fichiers',
-                        width: x * 0.8,
-                        height: y * 0.8,
-                        onMessage: (api, message) => {
-                            callback(message.content, {
-                                text: message.text
-                            })
-                        }
-                    })
-                },
-                setup: function(editor) {
-                    editor.on('init change', function() {
-                        editor.save();
-                    });
-                    editor.on('change', function(e) {
-                        @this.set('form.conditions', editor.getContent());
-                    });
-                }
-            });
-        </script>
-
-    @endpush
+        });
+    </script>
 </div>
