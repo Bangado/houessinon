@@ -1,8 +1,8 @@
 <div class="max-w-6xl mx-auto px-4 py-10">
-    <h1 class="text-3xl font-bold mb-6">Tous mes articles</h1>
+    <h1 class="text-3xl font-bold mb-6 text-white">Tous mes articles</h1>
 
     @if ($articles->isEmpty())
-        <div class="text-gray-600">Aucun article trouvé.</div>
+        <div class="text-white">Aucun article trouvé.</div>
     @else
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             @foreach ($articles as $article)

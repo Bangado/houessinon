@@ -11,11 +11,25 @@
 <link href="https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&display=swap" rel="stylesheet">
 <script src="https://cdn.tiny.cloud/1/<?php echo e(env('TINY_KEY')); ?>/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
+
+<style>
+    body {
+        background-image: url('https://i.postimg.cc/3x2tL445/Whats-App-Image-2025-06-06-at-18-27-40.jpg'); /* Wax pattern stylisé */
+        background-repeat: repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        font-family: 'Baloo Paaji 2', cursive;
+        color: #222;
+    }
+</style>
+
+
 <!---- ajouter le fichier css/syle.css --->
 <?php echo \Livewire\Livewire::styles(); ?>
 
 
-<body class="min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col"
+>
 
     <nav class="bg-white border-gray-200 dark:bg-gray-900">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">

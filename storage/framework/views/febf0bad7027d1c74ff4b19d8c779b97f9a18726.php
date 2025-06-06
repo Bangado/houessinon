@@ -43,11 +43,11 @@
     </section>
 
     <!-- Services -->
-    <section id="services" class="py-16 px-4 md:px-20 bg-white">
+    <section id="services" class="py-16 px-4 md:px-20">
         <div class="max-w-5xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800"> Mes offres pour te faire passer au niveau
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white"> Mes offres pour te faire passer au niveau
                 supérieur</h2>
-            <p class="mb-12 text-gray-600">Que tu sois une organisation, un porteur de projet ou un particulier, voici
+            <p class="mb-12 text-white">Que tu sois une organisation, un porteur de projet ou un particulier, voici
                 comment je peux t’aider :</p>
 
             <div class="grid md:grid-cols-2 gap-6 text-left">
@@ -112,7 +112,7 @@
                 </div>
             </div>
 
-            <p class="mt-10 text-gray-700">Envie d’en discuter ?
+            <p class="mt-10 text-white text-bold">Envie d’en discuter ?
                 <a href="#contact" class="text-orange-600 font-semibold underline hover:text-orange-800">Prendre RDV</a>
             </p>
         </div>
@@ -143,7 +143,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-20">
                     <div class="group bg-gray-100 overflow-hidden">
                         <div class="flex justify-end items-end -ml-2 overflow-hidden">
-                            <img src="<?php echo e(asset('assets/images/livre-2.jpg')); ?>" alt=""
+                            <img src="<?php echo e(asset('public/assets/images/livre-2.jpg')); ?>" alt=""
                                 class="group-hover:scale-110 transition-transform duration-700 ease-in-out">
                         </div>
                     </div>
@@ -151,7 +151,7 @@
                     <div class="group bg-gray-100 overflow-hidden">
 
                         <div class="flex justify-end items-end -ml-2 overflow-hidden">
-                            <img src="<?php echo e(asset('assets/images/livre-3.jpg')); ?>" alt=""
+                            <img src="<?php echo e(asset('public/assets/images/livre-3.jpg')); ?>" alt=""
                                 class="group-hover:scale-110 transition-transform duration-700 ease-in-out">
                         </div>
                     </div>
@@ -167,8 +167,8 @@
 
     <section id="contact" class="py-20 px-4 md:px-8 lg:px-20 bg-gradient-to-r from-orange-10 to-orange-50">
         <div class="max-w-3xl mx-auto">
-            <h2 class="text-2xl md:text-3xl font-bold text-center mb-6">On travaille ensemble ? Parlons en</h2>
-            <p class="text-center mb-6">🗓️ Prends rendez-vous en remplissant ce formulaire :</p>
+            <h2 class="text-2xl md:text-3xl text-white font-bold text-center mb-6">On travaille ensemble ? Parlons en</h2>
+            <p class="text-center text-white mb-6">🗓️ Prends rendez-vous en remplissant ce formulaire :</p>
 
             <?php if(session('success')): ?>
                 <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 2000)"
@@ -192,11 +192,11 @@
 
             <!-- Section réseaux sociaux -->
             <div class="mt-8 text-center">
-                <p class="text-sm mb-4">Je réponds sous 48h max. À très bientôt !</p>
+                <p class="text-sm mb-4 text-white">Je réponds sous 48h max. À très bientôt !</p>
                 <div class="flex justify-center space-x-6">
                     <!-- Lien Facebook -->
                     <a href="https://www.facebook.com/share/1BSU6YBXUL/?mibextid=wwXIfr" target="_blank"
-                        class="text-gray-700 hover:text-blue-600">
+                        class="text-white hover:text-gray-900">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="currentColor">
                             <path
@@ -206,7 +206,7 @@
 
                     <!-- Lien LinkedIn -->
                     <a href="https://www.linkedin.com/in/dumas-houessinon-a80425152/" target="_blank"
-                        class="text-gray-700 hover:text-blue-700">
+                        class="text-white hover:text-blue-700">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="currentColor">
                             <path

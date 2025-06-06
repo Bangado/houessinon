@@ -14,7 +14,7 @@
 
 <style>
     body {
-        background-image: url('https://i.postimg.cc/Znb8n7R2/preview.jpg'); /* Wax pattern stylisé */
+        background-image: url('https://i.postimg.cc/3x2tL445/Whats-App-Image-2025-06-06-at-18-27-40.jpg'); /* Wax pattern stylisé */
         background-repeat: repeat;
         background-size: cover;
         background-attachment: fixed;

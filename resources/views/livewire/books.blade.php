@@ -1,6 +1,6 @@
-    <section id="books" class="py-20 px-4 md:px-8 lg:px-20 bg-gradient-to-r from-orange-100 to-orange-50">
+    <section id="books" class="py-20 px-4 md:px-8 lg:px-20">
         <div class="max-w-5xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-10 text-gray-800">📖 Mes ouvrages pour t'inspirer</h2>
+            <h2 class="text-3xl md:text-4xl font-bold mb-10 text-white">📖 Mes ouvrages pour t'inspirer</h2>
 
             <!-- Présentation du livre -->
             <div class="bg-white p-8 rounded-xl shadow-md text-left">
@@ -43,7 +43,7 @@
 
             <!-- Formulaire de commande -->
             <div id="order-form" class="mt-16 text-left">
-                <h3 class="text-2xl font-bold mb-4 text-orange-600">Faire une demande d’achat</h3>
+                <h3 class="text-2xl font-bold mb-4 text-white">Faire une demande d’achat</h3>
                 @if (session('books'))
                     <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 4000)"
                         class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4 transition-opacity duration-1000"
