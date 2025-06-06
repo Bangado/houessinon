@@ -17,8 +17,8 @@ class UserSeeder extends Seeder
         if (User::count() == 0) {
             User::create([
                 'id' => (string) Str::uuid(),
-                'name' => 'SuperAdmin Goura',
-                'email' => 'superadmin@example.com',
+                'name' => 'Dumas Houessinon',
+                'email' => 'dumas@dumashouessinon.com',
                 'email_verified_at' => now(),
                 'password' => Hash::make('password'),
             ]);
