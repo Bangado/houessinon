@@ -14,7 +14,7 @@
     <section class="px-4 md:px-8 lg:px-20 py-20">
         <div class="flex flex-col lg:flex-row gap-8 items-center">
 
-            <img src="{{ asset('assets/images/dumas.png') }}" alt="History Image" class="w-full max-w-md mx-auto lg:mx-0">
+            <img src="{{ asset('public/assets/images/dumas.png') }}" alt="History Image" class="w-full max-w-md mx-auto lg:mx-0">
             <div class="bg-gray-200 p-6 sm:p-10 space-y-6 rounded-lg">
                 <h3 class="border-l-4 border-orange-500 font-bold pl-2 text-xl"> Qui suis-je ?</h3>
                 <p class="text-gray-600 text-justify">
