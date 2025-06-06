@@ -2,7 +2,7 @@
     <h1 class="text-2xl font-bold mb-6">Galerie d’images</h1>
 
     <?php if($images->isEmpty()): ?>
-        <p class="text-gray-500">Aucune image ajoutée.</p>
+        <p class="text-white">Aucune image ajoutée.</p>
     <?php else: ?>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             <?php $__currentLoopData = $images; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>

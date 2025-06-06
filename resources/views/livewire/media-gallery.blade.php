@@ -1,8 +1,8 @@
 <div class="max-w-6xl mx-auto px-4 py-10">
-    <h1 class="text-2xl font-bold mb-6">Galerie d’images</h1>
+    <h1 class="text-2xl font-bold mb-6 text-white">Galerie d’images</h1>
 
     @if ($images->isEmpty())
-        <p class="text-gray-500">Aucune image ajoutée.</p>
+        <p class="text-white">Aucune image ajoutée.</p>
     @else
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             @foreach ($images as $index => $image)
