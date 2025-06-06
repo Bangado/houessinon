@@ -20,20 +20,29 @@
 
             <!-- Cartes photos du livre -->
             <div class="grid md:grid-cols-2 gap-6 mt-12">
-                    <div class="group bg-gray-100 overflow-hidden">
-                        <div class="flex justify-end items-end -ml-2 overflow-hidden">
-                            <img src="{{ asset('public/assets/images/livre-2.jpg') }}" alt=""
+                <div class="group bg-gray-100 overflow-hidden">
+                    @if (env('APP_ENV') == 'local')
+                        <img src="{{ asset('assets/images/livre-2.jpg') }}" alt=""
+                            class="group-hover:scale-110 transition-transform duration-700 ease-in-out">
+                    @else
+                        <img src="{{ asset('public/assets/images/livre-2.jpg') }}" alt=""
+                            class="group-hover:scale-110 transition-transform duration-700 ease-in-out">
+                    @endif
+                </div>
+
+                <div class="group bg-gray-100 overflow-hidden">
+
+                    <div class="flex justify-end items-end -ml-2 overflow-hidden">
+
+                        @if (env('APP_ENV') == 'local')
+                            <img src="{{ asset('assets/images/livre-3.jpg') }}" alt=""
                                 class="group-hover:scale-110 transition-transform duration-700 ease-in-out">
-                        </div>
-                    </div>
-
-                    <div class="group bg-gray-100 overflow-hidden">
-
-                        <div class="flex justify-end items-end -ml-2 overflow-hidden">
+                        @else
                             <img src="{{ asset('public/assets/images/livre-3.jpg') }}" alt=""
                                 class="group-hover:scale-110 transition-transform duration-700 ease-in-out">
-                        </div>
+                        @endif
                     </div>
+                </div>
             </div>
 
 

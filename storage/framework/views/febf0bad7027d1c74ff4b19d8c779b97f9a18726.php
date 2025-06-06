@@ -1,7 +1,7 @@
 <main class="flex-grow">
 
     <!-- Hero -->
-    <section class="text-center py-20 px-4">
+    <section class="text-center py-20 px-4 md:px-8 lg:px-20 bg-gradient-to-r from-orange-100 via-white via-[80%] to-orange-100">
         <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold">
             <span class="text-orange-500">Dumas</span> HOUESSINON
         </h1>
@@ -13,8 +13,13 @@
     <!-- À propos -->
     <section class="px-4 md:px-8 lg:px-20 py-20">
         <div class="flex flex-col lg:flex-row gap-8 items-center">
-
-            <img src="<?php echo e(asset('assets/images/dumas.png')); ?>" alt="History Image" class="w-full max-w-md mx-auto lg:mx-0">
+            <?php if(env('APP_ENV') === 'local'): ?>
+                <img src="<?php echo e(asset('assets/images/dumas.png')); ?>" alt="History Image"
+                    class="w-full max-w-md mx-auto lg:mx-0">
+            <?php else: ?>
+                <img src="<?php echo e(asset('public/assets/images/dumas.png')); ?>" alt="History Image"
+                    class="w-full max-w-md mx-auto lg:mx-0">
+            <?php endif; ?>
             <div class="bg-gray-200 p-6 sm:p-10 space-y-6 rounded-lg">
                 <h3 class="border-l-4 border-orange-500 font-bold pl-2 text-xl"> Qui suis-je ?</h3>
                 <p class="text-gray-600 text-justify">
@@ -142,17 +147,26 @@
             <section class=" ">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-20">
                     <div class="group bg-gray-100 overflow-hidden">
-                        <div class="flex justify-end items-end -ml-2 overflow-hidden">
+                        <?php if(env('APP_ENV') == 'local'): ?>
+                            <img src="<?php echo e(asset('assets/images/livre-2.jpg')); ?>" alt=""
+                                class="group-hover:scale-110 transition-transform duration-700 ease-in-out">
+                        <?php else: ?>
                             <img src="<?php echo e(asset('public/assets/images/livre-2.jpg')); ?>" alt=""
                                 class="group-hover:scale-110 transition-transform duration-700 ease-in-out">
-                        </div>
+                        <?php endif; ?>
                     </div>
 
                     <div class="group bg-gray-100 overflow-hidden">
 
                         <div class="flex justify-end items-end -ml-2 overflow-hidden">
-                            <img src="<?php echo e(asset('public/assets/images/livre-3.jpg')); ?>" alt=""
-                                class="group-hover:scale-110 transition-transform duration-700 ease-in-out">
+
+                            <?php if(env('APP_ENV') == 'local'): ?>
+                                <img src="<?php echo e(asset('assets/images/livre-3.jpg')); ?>" alt=""
+                                    class="group-hover:scale-110 transition-transform duration-700 ease-in-out">
+                            <?php else: ?>
+                                <img src="<?php echo e(asset('public/assets/images/livre-3.jpg')); ?>" alt=""
+                                    class="group-hover:scale-110 transition-transform duration-700 ease-in-out">
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -167,7 +181,8 @@
 
     <section id="contact" class="py-20 px-4 md:px-8 lg:px-20 bg-gradient-to-r from-orange-10 to-orange-50">
         <div class="max-w-3xl mx-auto">
-            <h2 class="text-2xl md:text-3xl text-white font-bold text-center mb-6">On travaille ensemble ? Parlons en</h2>
+            <h2 class="text-2xl md:text-3xl text-white font-bold text-center mb-6">On travaille ensemble ? Parlons en
+            </h2>
             <p class="text-center text-white mb-6">🗓️ Prends rendez-vous en remplissant ce formulaire :</p>
 
             <?php if(session('success')): ?>
