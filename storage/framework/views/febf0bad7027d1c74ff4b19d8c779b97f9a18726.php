@@ -1,11 +1,11 @@
 <main class="flex-grow">
 
     <!-- Hero -->
-    <section class="text-center py-20 bg-gradient-to-r from-orange-100 via-white via-[80%] to-orange-100 px-4">
+    <section class="text-center py-20 px-4">
         <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold">
             <span class="text-orange-500">Dumas</span> HOUESSINON
         </h1>
-        <p class="text-gray-500 mt-4 text-lg md:text-xl mx-auto max-w-2xl">
+        <p class="text-white mt-4 text-lg md:text-xl mx-auto max-w-2xl">
             Une voix qui propulse les idées et les marques
         </p>
     </section>
