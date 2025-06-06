@@ -20,13 +20,24 @@
 
             <!-- Cartes photos du livre -->
             <div class="grid md:grid-cols-2 gap-6 mt-12">
-                @for ($i = 2; $i <= 3; $i++)
-                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-                        <img src="{{ asset('public/assets/images/livre-' . $i . '.jpg') }}"
-                            alt="Photo livre {{ $i }}" class="w-full  object-cover">
+                    <div class="group bg-gray-100 overflow-hidden">
+                        <div class="flex justify-end items-end -ml-2 overflow-hidden">
+                            <img src="{{ asset('public/assets/images/livre-2.jpg') }}" alt=""
+                                class="group-hover:scale-110 transition-transform duration-700 ease-in-out">
+                        </div>
                     </div>
-                @endfor
+
+                    <div class="group bg-gray-100 overflow-hidden">
+
+                        <div class="flex justify-end items-end -ml-2 overflow-hidden">
+                            <img src="{{ asset('public/assets/images/livre-3.jpg') }}" alt=""
+                                class="group-hover:scale-110 transition-transform duration-700 ease-in-out">
+                        </div>
+                    </div>
             </div>
+
+
+
 
             <!-- Contacts par pays -->
 
