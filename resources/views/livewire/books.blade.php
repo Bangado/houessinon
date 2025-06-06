@@ -22,7 +22,7 @@
             <div class="grid md:grid-cols-2 gap-6 mt-12">
                 @for ($i = 2; $i <= 3; $i++)
                     <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-                        <img src="{{ asset('assets/images/livre-' . $i . '.jpg') }}"
+                        <img src="{{ asset('public/assets/images/livre-' . $i . '.jpg') }}"
                             alt="Photo livre {{ $i }}" class="w-full  object-cover">
                     </div>
                 @endfor
