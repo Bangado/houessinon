@@ -1,5 +1,5 @@
 <div class="max-w-6xl mx-auto px-4 py-10">
-    <h1 class="text-2xl font-bold mb-6">Galerie d’images</h1>
+    <h1 class="text-2xl font-bold mb-6 text-white">Galerie d’images</h1>
 
     <?php if($images->isEmpty()): ?>
         <p class="text-white">Aucune image ajoutée.</p>

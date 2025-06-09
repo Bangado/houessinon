@@ -8,8 +8,13 @@
             <?php $__currentLoopData = $articles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $article): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="bg-white rounded-lg shadow hover:shadow-md transition overflow-hidden">
                     <?php if($article->image): ?>
-                        <img src="<?php echo e(asset('storage/' . $article->image)); ?>" alt="<?php echo e($article->title); ?>"
-                            class="w-full h-48 object-cover">
+                        <?php if(env('APP_ENV') == 'local'): ?>
+                            <img src="<?php echo e(asset('storage/' . $article->image)); ?>" alt="<?php echo e($article->title); ?>"
+                                class="w-full h-128 object-cover">
+                        <?php else: ?>
+                            <img src="<?php echo e(asset('public/storage/' . $article->image)); ?>" alt="<?php echo e($article->title); ?>"
+                                class="w-full h-128 object-cover">
+                        <?php endif; ?>
                     <?php endif; ?>
 
                     <div class="p-4 space-y-2">

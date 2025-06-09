@@ -12,16 +12,21 @@
         <!-- Titre -->
         <div>
             <label class="block text-sm font-medium">Titre</label>
-            <input type="text" wire:model="title"
-                   class="w-full border border-gray-300 rounded px-3 py-2 shadow-sm">
-            @error('title') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
+            <input type="text" wire:model="title" class="w-full border border-gray-300 rounded px-3 py-2 shadow-sm">
+            @error('title')
+                <span class="text-red-600 text-sm">{{ $message }}</span>
+            @enderror
         </div>
 
         <!-- Image actuelle -->
         @if ($existingImage)
             <div>
                 <p class="text-sm text-gray-500">Image actuelle :</p>
-                <img src="{{ asset('storage/' . $existingImage) }}" class="w-full max-h-60 object-cover rounded" />
+                @if (env('APP_ENV') == 'local')
+                    <img src="{{ asset('storage/' . $existingImage) }}" class="w-full max-h-60 object-cover rounded" />
+                @else
+                    <img src="{{ asset('public/storage/' . $existingImage) }}" class="w-full max-h-60 object-cover rounded" />
+                @endif
             </div>
         @endif
 
@@ -29,7 +34,9 @@
         <div>
             <label class="block text-sm font-medium">Nouvelle image (optionnel)</label>
             <input type="file" wire:model="newImage" accept="image/*">
-            @error('newImage') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
+            @error('newImage')
+                <span class="text-red-600 text-sm">{{ $message }}</span>
+            @enderror
 
             @if ($newImage)
                 <div class="mt-2">
@@ -42,11 +49,12 @@
         <div wire:ignore>
             <label class="block text-sm font-medium">Contenu</label>
             <textarea id="editor" class="w-full rounded border-gray-300 shadow-sm"></textarea>
-            @error('content') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
+            @error('content')
+                <span class="text-red-600 text-sm">{{ $message }}</span>
+            @enderror
         </div>
 
-        <button type="submit"
-                class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
             Enregistrer
         </button>
     </form>
@@ -54,38 +62,39 @@
 
 <!-- Scripts TinyMCE -->
 @push('scripts')
-<script src="https://cdn.tiny.cloud/1/kueldrwgikubo5osmzxosl5stwnbs5nlw45bn7i9yb183u3j/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/kueldrwgikubo5osmzxosl5stwnbs5nlw45bn7i9yb183u3j/tinymce/7/tinymce.min.js"
+        referrerpolicy="origin"></script>
 
-<script>
-    function initTinyMCE(content = '') {
-        if (tinymce.get("editor")) {
-            tinymce.get("editor").remove();
+    <script>
+        function initTinyMCE(content = '') {
+            if (tinymce.get("editor")) {
+                tinymce.get("editor").remove();
+            }
+
+            tinymce.init({
+                selector: '#editor',
+                height: 400,
+                menubar: false,
+                plugins: 'link image code lists table media',
+                toolbar: 'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist | link image media | code',
+                setup: function(editor) {
+                    editor.on('init', function() {
+                        editor.setContent(content);
+                    });
+
+                    editor.on('Change KeyUp', function() {
+                        @this.set('content', editor.getContent());
+                    });
+                }
+            });
         }
 
-        tinymce.init({
-            selector: '#editor',
-            height: 400,
-            menubar: false,
-            plugins: 'link image code lists table media',
-            toolbar: 'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist | link image media | code',
-            setup: function (editor) {
-                editor.on('init', function () {
-                    editor.setContent(content);
-                });
-
-                editor.on('Change KeyUp', function () {
-                    @this.set('content', editor.getContent());
-                });
-            }
-        });
-    }
-
-    document.addEventListener('livewire:load', function () {
-        initTinyMCE(@this.get('content') ?? '');
-
-        Livewire.hook('message.processed', (message, component) => {
+        document.addEventListener('livewire:load', function() {
             initTinyMCE(@this.get('content') ?? '');
+
+            Livewire.hook('message.processed', (message, component) => {
+                initTinyMCE(@this.get('content') ?? '');
+            });
         });
-    });
-</script>
+    </script>
 @endpush

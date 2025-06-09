@@ -23,7 +23,7 @@
             <div class="bg-gray-200 p-6 sm:p-10 space-y-6 rounded-lg">
                 <h3 class="border-l-4 border-orange-500 font-bold pl-2 text-xl"> Qui suis-je ?</h3>
                 <p class="text-gray-600 text-justify">
-                    Je suis Dumas HOUESSINON. Consultant en communication, formateur en marketing digital,
+                    Je suis Dumas HOUESSINON. Consultant en communication et relation publique, formateur en marketing digital,
                     expert en personal branding mais avant tout,un passionné de l’impact.Depuis près de 10 ans,
                     j’aide les entreprises, ONG, leaders et jeunes ambitieux à mieux raconter leur histoire à faire
                     entendre leur voix et à transformer leur visibilité en influence,et leur influence en résultats.
@@ -32,7 +32,7 @@
                 <p class="text-gray-600 text-justify">
                     Diplômé en communication, certifié en gestion de projet et en développement, j’ai collaboré
                     avec des acteurs comme <span class="font-bold text-orange-500">Educo, TIC Agrobusiness, PNUD,
-                        Internet Society BENIN ,Google Developers Group encore la Croix-Rouge Béninoise</span>.
+                        Internet Society BENIN ,Google Developers Group, District 403 A4 du lions international ou encore la Croix-Rouge Béninoise</span>.
                     J’ai également animé plus de 150 sessions de formation et conférences sur la communication,
                     l’employabilité et le digital.
                 </p>
@@ -60,14 +60,14 @@
                 <div
                     class="p-8 bg-gray-50 rounded-xl shadow hover:bg-orange-500 hover:text-white transition duration-300">
                     <div class="flex items-center gap-4 mb-4">
-                        <svg class="w-10 h-10 text-orange-500 group-hover:text-white" fill="none"
+                        <svg class="w-10 h-10 text-orange-500 hover:text-white group-hover:text-white" fill="none"
                             stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M9.75 3v2.25M14.25 3v2.25M3.75 7.5h16.5M4.5 19.5h15a.75.75 0 0 0 .75-.75V7.5H3.75v11.25a.75.75 0 0 0 .75.75Z" />
                         </svg>
                         <h3 class="font-bold text-xl">Stratégie de communication</h3>
                     </div>
-                    <p> Audit – positionnement – plan d’action – pilotage</p>
+                    <p> Audit – positionnement – plan d’action – pilotage-marketing et Relations publiques</p>
                     <p> Pour marques, ONG, entrepreneurs et créateurs</p>
                 </div>
 
@@ -75,7 +75,7 @@
                 <div
                     class="p-8 bg-gray-50 rounded-xl shadow hover:bg-orange-500 hover:text-white transition duration-300">
                     <div class="flex items-center gap-4 mb-4">
-                        <svg class="w-10 h-10 text-orange-500 group-hover:text-white" fill="none"
+                        <svg class="w-10 h-10 text-orange-500 hover:text-white group-hover:text-white" fill="none"
                             stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M8 16h8M8 12h4m-4-4h8m4-2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2Z" />
@@ -90,7 +90,7 @@
                 <div
                     class="p-8 bg-gray-50 rounded-xl shadow hover:bg-orange-500 hover:text-white transition duration-300">
                     <div class="flex items-center gap-4 mb-4">
-                        <svg class="w-10 h-10 text-orange-500 group-hover:text-white" fill="none"
+                        <svg class="w-10 h-10 text-orange-500 hover:text-white group-hover:text-white" fill="none"
                             stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M5.25 6.75a6.75 6.75 0 1 1 13.5 0v1.5a6.75 6.75 0 1 1-13.5 0v-1.5Zm6.75 10.5a8.25 8.25 0 0 0-8.25 8.25h16.5a8.25 8.25 0 0 0-8.25-8.25Z" />
@@ -105,7 +105,7 @@
                 <div
                     class="p-8 bg-gray-50 rounded-xl shadow hover:bg-orange-500 hover:text-white transition duration-300">
                     <div class="flex items-center gap-4 mb-4">
-                        <svg class="w-10 h-10 text-orange-500 group-hover:text-white" fill="none"
+                        <svg class="w-10 h-10 text-orange-500 hover:text-white group-hover:text-white" fill="none"
                             stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M12 14l9-5-9-5-9 5 9 5Zm0 0v7m0-7l9-5m-9 5L3 9" />

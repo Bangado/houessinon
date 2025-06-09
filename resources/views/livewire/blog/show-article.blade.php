@@ -8,8 +8,13 @@
             @foreach ($articles as $article)
                 <div class="bg-white rounded-lg shadow hover:shadow-md transition overflow-hidden">
                     @if ($article->image)
-                        <img src="{{ asset('storage/' . $article->image) }}" alt="{{ $article->title }}"
-                            class="w-full h-48 object-cover">
+                        @if (env('APP_ENV') == 'local')
+                            <img src="{{ asset('storage/' . $article->image) }}" alt="{{ $article->title }}"
+                                class="w-full h-128 object-cover">
+                        @else
+                            <img src="{{ asset('public/storage/' . $article->image) }}" alt="{{ $article->title }}"
+                                class="w-full h-128 object-cover">
+                        @endif
                     @endif
 
                     <div class="p-4 space-y-2">
