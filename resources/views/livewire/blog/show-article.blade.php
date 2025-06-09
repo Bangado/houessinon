@@ -9,10 +9,10 @@
                 <div class="bg-white rounded-lg shadow hover:shadow-md transition overflow-hidden">
                     @if ($article->image)
                         @if (env('APP_ENV') == 'local')
-                            <img src="{{ asset('storage/' . $article->image) }}" alt="{{ $article->title }}"
+                            <img src="{{ asset($article->image) }}" alt="{{ $article->title }}"
                                 class="w-full h-128 object-cover">
                         @else
-                            <img src="{{ asset('public/storage/' . $article->image) }}" alt="{{ $article->title }}"
+                            <img src="{{ asset('public/' . $article->image) }}" alt="{{ $article->title }}"
                                 class="w-full h-128 object-cover">
                         @endif
                     @endif

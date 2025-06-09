@@ -9,10 +9,10 @@
                 <div class="bg-white rounded-lg shadow hover:shadow-md transition overflow-hidden">
                     <?php if($article->image): ?>
                         <?php if(env('APP_ENV') == 'local'): ?>
-                            <img src="<?php echo e(asset('storage/' . $article->image)); ?>" alt="<?php echo e($article->title); ?>"
+                            <img src="<?php echo e(asset($article->image)); ?>" alt="<?php echo e($article->title); ?>"
                                 class="w-full h-128 object-cover">
                         <?php else: ?>
-                            <img src="<?php echo e(asset('public/storage/' . $article->image)); ?>" alt="<?php echo e($article->title); ?>"
+                            <img src="<?php echo e(asset('public/' . $article->image)); ?>" alt="<?php echo e($article->title); ?>"
                                 class="w-full h-128 object-cover">
                         <?php endif; ?>
                     <?php endif; ?>

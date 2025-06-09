@@ -33,7 +33,25 @@ class AddBlog extends Component
             'content' => 'required|string',
         ]);
 
-        $imagePath = $this->image ? $this->image->store('articles', 'public') : null;
+        // $imagePath = $this->image ? $this->image->store('articles', 'public') : null;
+
+        if ($this->image && $this->image->isValid()) {
+            $destinationPath = public_path('assets/images/articles');
+
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
+            $imagePath = $this->image->storeAs(
+                'assets/images/articles',
+                uniqid() . '.' . $this->image->getClientOriginalExtension(),
+                ['disk' => 'local']
+            );
+
+
+        } else {
+            $imagePath = null;
+        }
 
         Article::create([
             'title' => $this->title,
