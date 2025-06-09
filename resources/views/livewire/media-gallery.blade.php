@@ -9,9 +9,9 @@
                 <div class="bg-white rounded shadow p-2 cursor-pointer hover:scale-105 transition"
                     wire:click="$set('currentIndex', {{ $index }})">
                     @if (env('APP_ENV') == 'local')
-                        <img src="{{ asset('storage/' . $image->filename) }}" class="rounded w-full h-128 object-cover" />
+                        <img src="{{ asset($image->filename) }}" class="rounded w-full h-128 object-cover" />
                     @else
-                        <img src="{{ asset('public/storage/' . $image->filename) }}"
+                        <img src="{{ asset('public/' . $image->filename) }}"
                             class="rounded w-full h-128 object-cover" />
                     @endif
                 </div>

@@ -9,9 +9,9 @@
                 <div class="bg-white rounded shadow p-2 cursor-pointer hover:scale-105 transition"
                     wire:click="$set('currentIndex', <?php echo e($index); ?>)">
                     <?php if(env('APP_ENV') == 'local'): ?>
-                        <img src="<?php echo e(asset('storage/' . $image->filename)); ?>" class="rounded w-full h-128 object-cover" />
+                        <img src="<?php echo e(asset($image->filename)); ?>" class="rounded w-full h-128 object-cover" />
                     <?php else: ?>
-                        <img src="<?php echo e(asset('public/storage/' . $image->filename)); ?>"
+                        <img src="<?php echo e(asset('public/' . $image->filename)); ?>"
                             class="rounded w-full h-128 object-cover" />
                     <?php endif; ?>
                 </div>

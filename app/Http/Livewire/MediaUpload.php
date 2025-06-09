@@ -18,11 +18,27 @@ class MediaUpload extends Component
             'image' => 'required|image|max:2048',
         ]);
 
-        $filename = $this->image->store('gallery', 'public');
+        if ($this->image && $this->image->isValid()) {
+            $destinationPath = public_path('assets/images/gallery');
 
-        Media::create([
-            'filename' => $filename,
-        ]);
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
+            $imagePath = $this->image->storeAs(
+                'assets/images/gallery',
+                uniqid() . '.' . $this->image->getClientOriginalExtension(),
+                ['disk' => 'local']
+            );
+
+
+            Media::create([
+                'filename' => $imagePath,
+            ]);
+        } else {
+            $imagePath = null;
+        }
+
 
         session()->flash('success', 'Image enregistrée avec succès !');
         $this->reset('image');
