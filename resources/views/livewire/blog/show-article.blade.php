@@ -37,12 +37,12 @@
                             </a>
 
                             {{-- Bouton visible uniquement pour admin --}}
-                            @auth
+                            {{--  @auth
                                 <a href="{{ route('admin.articles.edit', $article->id) }}"
                                     class="text-sm text-yellow-600 hover:underline font-medium">
                                     📝 Modifier
                                 </a>
-                            @endauth
+                            @endauth --}}
                         </div>
 
                     </div>

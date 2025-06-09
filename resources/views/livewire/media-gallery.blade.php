@@ -4,15 +4,15 @@
     @if ($images->isEmpty())
         <p class="text-white">Aucune image ajoutée.</p>
     @else
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
             @foreach ($images as $index => $image)
                 <div class="bg-white rounded shadow p-2 cursor-pointer hover:scale-105 transition"
                     wire:click="$set('currentIndex', {{ $index }})">
                     @if (env('APP_ENV') == 'local')
-                        <img src="{{ asset('storage/' . $image->filename) }}" class="rounded w-full h-48 object-cover" />
+                        <img src="{{ asset('storage/' . $image->filename) }}" class="rounded w-full h-128 object-cover" />
                     @else
                         <img src="{{ asset('public/storage/' . $image->filename) }}"
-                            class="rounded w-full h-48 object-cover" />
+                            class="rounded w-full h-128 object-cover" />
                     @endif
                 </div>
             @endforeach

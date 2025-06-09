@@ -1,4 +1,4 @@
-<div class="max-w-xl mx-auto py-10 px-4">
+<div class="max-w-xl mx-auto py-10 px-4 bg-white ">
     <h1 class="text-2xl font-bold mb-4">Ajouter une image</h1>
 
     <?php if(session()->has('success')): ?>

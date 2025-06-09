@@ -40,12 +40,7 @@
                             </a>
 
                             
-                            <?php if(auth()->guard()->check()): ?>
-                                <a href="<?php echo e(route('admin.articles.edit', $article->id)); ?>"
-                                    class="text-sm text-yellow-600 hover:underline font-medium">
-                                    📝 Modifier
-                                </a>
-                            <?php endif; ?>
+                            
                         </div>
 
                     </div>
